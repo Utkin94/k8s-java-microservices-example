@@ -1,0 +1,9 @@
+FROM openjdk:11-slim
+
+WORKDIR ./home/app
+
+COPY ./target/gateway-api-1.0-SNAPSHOT.jar ./
+
+EXPOSE 8081
+
+CMD java -jar gateway-api-1.0-SNAPSHOT.jar

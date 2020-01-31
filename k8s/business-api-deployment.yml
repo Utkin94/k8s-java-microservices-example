@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: business-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: business
+  template:
+    metadata:
+      labels:
+        component: business
+    spec:
+      containers:
+        - name: business
+          image: quake94/business-api
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-cluster-ip-service:5432/postgres
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: POSTGRES_PASSWORD

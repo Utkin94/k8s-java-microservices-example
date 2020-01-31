@@ -1,0 +1,4 @@
+spring.jpa.hibernate.ddl-auto: none
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/liquibase-changelog.xml

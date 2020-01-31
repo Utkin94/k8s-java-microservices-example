@@ -1,0 +1,9 @@
+FROM openjdk:11-slim
+
+WORKDIR ./home/app
+
+COPY ./target/business-api-1.0-SNAPSHOT.jar ./
+
+EXPOSE 8080
+
+CMD java -jar business-api-1.0-SNAPSHOT.jar
